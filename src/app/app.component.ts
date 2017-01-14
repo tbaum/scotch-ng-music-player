@@ -96,7 +96,7 @@ export class AppComponent implements OnInit{
   composeBackgroundStyle(url) {
       return {
         width: '100%',
-        height: '600px',
+        height: '1000px',
         backgroundSize:'cover',
         backgroundImage: `linear-gradient(
       rgba(0, 0, 0, 0.7),
