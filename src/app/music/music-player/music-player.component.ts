@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter} from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'music-player',
@@ -6,6 +6,7 @@ import {Component, Output, EventEmitter} from '@angular/core';
   styleUrls: ['./music-player.component.css'],
 })
 export class MusicPlayerComponent {
+  @Input() paused;
   @Output() backward = new EventEmitter();
   @Output() pauseplay = new EventEmitter();
   @Output() forward = new EventEmitter();

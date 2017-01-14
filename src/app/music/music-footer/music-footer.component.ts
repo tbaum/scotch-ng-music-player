@@ -5,7 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './music-footer.component.html',
   styleUrls: ['./music-footer.component.css'],
 })
-export class MusicFooterComponent {
-
-}
+export class MusicFooterComponent {}
 

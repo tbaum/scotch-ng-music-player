@@ -1,4 +1,4 @@
-import {Component, Injectable, Output, EventEmitter} from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 
 @Component({
@@ -7,13 +7,18 @@ import {Component, Injectable, Output, EventEmitter} from '@angular/core';
   styleUrls: ['./music-search.component.css']
 })
 export class MusicSearchComponent {
-  track: string;
-  @Output() update = new EventEmitter();
 
-  results: string[];
+  track: string;
+  @Input() tracks: any[];
+
+  @Output() update = new EventEmitter();
+  @Output() query = new EventEmitter();
 
   search(event) {
-    this.results = ['monalis', 'christiana', 'chioma', 'ekeoma'];
-    this.update.emit(this.track);
+    this.query.emit(event.query);
+  }
+
+  select(track) {
+    this.update.emit(track);
   }
 }
