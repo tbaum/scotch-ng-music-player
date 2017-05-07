@@ -1,6 +1,6 @@
 import { ScotchNgMusicPlayerPage } from './app.po';
 
-describe('scotch-ng-music-player App', function() {
+describe('scotch-ng-music-player App', () => {
   let page: ScotchNgMusicPlayerPage;
 
   beforeEach(() => {

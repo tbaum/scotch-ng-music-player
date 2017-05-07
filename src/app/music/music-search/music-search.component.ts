@@ -1,24 +1,15 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'music-search',
+  selector: 'app-music-search',
   templateUrl: './music-search.component.html',
-  styleUrls: ['./music-search.component.css']
+  styleUrls: ['./music-search.component.scss']
 })
-export class MusicSearchComponent {
+export class MusicSearchComponent implements OnInit {
 
-  track: string;
-  @Input() tracks: any[];
+  constructor() { }
 
-  @Output() update = new EventEmitter();
-  @Output() query = new EventEmitter();
-
-  search(event) {
-    this.query.emit(event.query);
+  ngOnInit() {
   }
 
-  select(track) {
-    this.update.emit(track);
-  }
 }
