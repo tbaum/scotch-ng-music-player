@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-music-progress',
@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./music-progress.component.scss']
 })
 export class MusicProgressComponent implements OnInit {
+
+  @Input('elapsed') elapsed: string;
+  @Input('total') total: string;
+  @Input('current') current: number;
 
   constructor() { }
 
