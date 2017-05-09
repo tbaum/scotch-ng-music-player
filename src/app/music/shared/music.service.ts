@@ -4,6 +4,8 @@ import { ApiService } from './api.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+import {Observable} from 'rxjs/Observable';
+import {Track} from './interface/track';
 
 @Injectable()
 export class MusicService {
@@ -24,14 +26,14 @@ export class MusicService {
     this.audio.play();
   }
 
-  getPlaylistTracks() {
+  getPlaylistTracks(): Observable<Track[]> {
     // Request for a playlist via Soundcloud using a client id
     return this.apiService.get('https://api.soundcloud.com/playlists/209262931', true)
       .map(res => res.json())
       .map(data => data.tracks);
   }
 
-  randomTrack(tracks) {
+  randomTrack(tracks): Track {
     const trackLength = tracks.length;
     // Pick a random number
     const randomNumber = Math.floor((Math.random() * trackLength) + 1);
@@ -47,7 +49,7 @@ export class MusicService {
     return minutes + ':' + seconds;
   }
 
-  findTracks(value) {
+  findTracks(value): Observable<Track[]> {
     return this.apiService.get(`${this.apiService.prepareUrl('https://api.soundcloud.com/tracks')}&q=${value}`, false)
       .debounceTime(300)
       .distinctUntilChanged()

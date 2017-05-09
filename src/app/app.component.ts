@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { MusicService } from './music/shared/music.service';
+import {Track} from './music/shared/interface/track';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +8,13 @@ import { MusicService } from './music/shared/music.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title;
-  position;
-  elapsed;
-  duration;
-  paused = true;
-  tracks: any[] = [];
-  filteredTracks: any[] = [];
+  title: String;
+  position: Number;
+  elapsed: String;
+  duration: String;
+  paused: Boolean = true;
+  tracks: Track[] = [];
+  filteredTracks: Track[] = [];
   backgroundStyle;
 
   constructor(private musicService: MusicService) {
@@ -34,8 +35,9 @@ export class AppComponent implements OnInit {
   }
 
   handleRandom() {
-    const randomTrack = this.musicService.randomTrack(this.tracks);
+    const randomTrack: Track = this.musicService.randomTrack(this.tracks);
     this.musicService.play(randomTrack.stream_url);
+    console.log('title:' + randomTrack.title + '\n user:' + randomTrack.user.username);
     this.title = randomTrack.title;
     this.backgroundStyle = this.composeBackgroundStyle(randomTrack.artwork_url);
   }
