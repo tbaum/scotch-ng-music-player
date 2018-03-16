@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { MusicModule } from './music/music.module';
+import {MusicModule} from './music/music.module';
 
 @NgModule({
   declarations: [

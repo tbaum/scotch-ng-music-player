@@ -1,9 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'music-footer',
+  selector: 'app-music-footer',
   templateUrl: './music-footer.component.html',
-  styleUrls: ['./music-footer.component.css'],
+  styleUrls: ['./music-footer.component.scss']
 })
-export class MusicFooterComponent {}
+export class MusicFooterComponent implements OnInit {
 
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

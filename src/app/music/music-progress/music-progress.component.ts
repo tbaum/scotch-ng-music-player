@@ -1,13 +1,19 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'music-progress',
+  selector: 'app-music-progress',
   templateUrl: './music-progress.component.html',
-  styleUrls: ['./music-progress.component.css'],
+  styleUrls: ['./music-progress.component.scss']
 })
-export class MusicProgressComponent {
-  @Input() elapsed: string;
-  @Input() total: string;
-  @Input() current: number;
-}
+export class MusicProgressComponent implements OnInit {
 
+  @Input('elapsed') elapsed: string;
+  @Input('total') total: string;
+  @Input('current') current: number;
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

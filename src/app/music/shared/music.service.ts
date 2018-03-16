@@ -4,16 +4,15 @@ import { ApiService } from './api.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
-
+import {Observable} from 'rxjs/Observable';
+import {Track} from './interface/track';
 
 @Injectable()
 export class MusicService {
 
   audio;
 
-  constructor(
-    private apiService: ApiService
-  ) {
+  constructor(private apiService: ApiService) {
     this.audio = new Audio();
   }
 
@@ -24,17 +23,17 @@ export class MusicService {
 
   play(url) {
     this.load(url);
-    this.audio.play()
+    this.audio.play();
   }
 
-  getPlaylistTracks () {
-      //Request for a playlist via Soundcloud using a client id
-      return this.apiService.get('https://api.soundcloud.com/playlists/209262931', true)
-        .map(res => res.json())
-        .map(data => data.tracks);
+  getPlaylistTracks(): Observable<Track[]> {
+    // Request for a playlist via Soundcloud using a client id
+    return this.apiService.get('https://api.soundcloud.com/playlists/209262931', true)
+      .map(res => res.json())
+      .map(data => data.tracks);
   }
 
-  randomTrack(tracks) {
+  randomTrack(tracks): Track {
     const trackLength = tracks.length;
     // Pick a random number
     const randomNumber = Math.floor((Math.random() * trackLength) + 1);
@@ -43,18 +42,18 @@ export class MusicService {
   }
 
   formatTime(seconds) {
-    let minutes:any = Math.floor(seconds / 60);
-    minutes = (minutes >= 10) ? minutes : "0" + minutes;
+    let minutes: any = Math.floor(seconds / 60);
+    minutes = (minutes >= 10) ? minutes : '0' + minutes;
     seconds = Math.floor(seconds % 60);
-    seconds = (seconds >= 10) ? seconds : "0" + seconds;
-    return minutes + ":" + seconds;
+    seconds = (seconds >= 10) ? seconds : '0' + seconds;
+    return minutes + ':' + seconds;
   }
 
-  findTracks(value) {
+  findTracks(value): Observable<Track[]> {
     return this.apiService.get(`${this.apiService.prepareUrl('https://api.soundcloud.com/tracks')}&q=${value}`, false)
       .debounceTime(300)
       .distinctUntilChanged()
-      .map(res => res.json())
+      .map(res => res.json());
   }
 
   xlArtwork(url) {

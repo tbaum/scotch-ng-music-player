@@ -1,11 +1,17 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'music-details',
+  selector: 'app-music-details',
   templateUrl: './music-details.component.html',
-  styleUrls: ['./music-details.component.css'],
+  styleUrls: ['./music-details.component.scss']
 })
-export class MusicDetailsComponent {
-  @Input() title: string;
-}
+export class MusicDetailsComponent implements OnInit {
 
+  @Input() title: string;
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

@@ -1,29 +1,29 @@
 <div [ngStyle]="backgroundStyle">
-  <music-search
+  <app-music-search
     (query)="handleQuery($event)"
     (update)="handleUpdate($event)"
     [tracks]="filteredTracks"
-  ></music-search>
+  ></app-music-search>
 
-  <music-details
+  <app-music-details
     [title]="title"
-  ></music-details>
+  ></app-music-details>
 
-  <music-player
+  <app-music-player
     (random)="handleRandom($event)"
     (backward)="handleBackward()"
     (forward)="handleForward()"
     (pauseplay)="handlePausePlay()"
     (stop)="handleStop()"
     [paused]="paused"
-  ></music-player>
+  ></app-music-player>
 
-  <music-progress
+  <app-music-progress
     [current]="position"
     [elapsed]="elapsed"
     [total]="duration"
-  ></music-progress>
+  ></app-music-progress>
 
-  <music-footer></music-footer>
+  <app-music-footer></app-music-footer>
 
 </div>
